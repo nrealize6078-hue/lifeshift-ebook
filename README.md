@@ -32,8 +32,8 @@ Branch = `main` / フォルダ = `/ (root)` を選ぶと公開されます。
 | 章末カード | LIFE SHIFT ／ SHIFT POINT ／ 今日の問い の3枚組を各章末に収録 |
 | 対応端末 | iOS Safari / Android Chrome / PC各ブラウザ。375px幅から横スクロールなしで読めます |
 
-※ 検索エンジンに載せたくない場合は `index.html` の `<head>` に
-`<meta name="robots" content="noindex">` を1行足してください。
+※ 検索エンジンには載せない設定です（`<meta name="robots" content="noindex,nofollow">` と
+`robots.txt`）。URLを知っている人だけが読めます。公開検索に載せたい場合はこの2つを外してください。
 
 ## 更新方法
 
