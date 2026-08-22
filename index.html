@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="LIFE SHIFT｜人生OSをアップデートする9つの物語　人生100年時代を自分の判断で生きるための教科書　著者 大橋孝行">
+<meta name="author" content="大橋孝行">
+<meta name="theme-color" content="#0a1526">
+<meta property="og:type" content="book">
+<meta property="og:title" content="LIFE SHIFT｜人生OSをアップデートする9つの物語">
+<meta property="og:description" content="人生100年時代を自分の判断で生きるための教科書">
+<meta property="og:image" content="cover.jpg">
+<title>LIFE SHIFT｜人生OSをアップデートする9つの物語</title>
+<style>
+:root{
+  --navy:#0a1526; --deep:#050b16; --blue:#2f8fff; --blue-l:#6bb6ff; --blue-d:#1b6fd4;
+  --ink:#2c3746; --muted:#65728a; --mist:#eef3fa; --line:#dbe3ee;
+  --barh:56px; --safeT:env(safe-area-inset-top,0px); --safeB:env(safe-area-inset-bottom,0px);
+  --bar:calc(var(--barh) + var(--safeT));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;padding-top:var(--bar);background:#e8ecf3;color:var(--ink);line-height:1.82;
+  font-family:"Noto Sans JP","Noto Sans CJK JP","Hiragino Kaku Gothic ProN","Yu Gothic",
+    "Meiryo",system-ui,sans-serif;
+  overflow-wrap:anywhere;line-break:strict}
+
+/* ============ 上部固定バー（目次） ============ */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:60;height:var(--bar);
+  padding:var(--safeT) max(14px,3vw) 0;background:var(--navy);color:#fff;
+  display:flex;align-items:center;gap:12px;box-shadow:0 2px 14px #0a152650}
+.topbar .home{color:var(--blue-l);font-weight:700;font-size:.74rem;letter-spacing:.16em;
+  text-decoration:none;white-space:nowrap;flex:none}
+.topbar .now{flex:1;min-width:0;color:#c3cfe0;font-size:.76rem;line-height:1.35;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:right}
+.topbar .now b{color:var(--blue-l);font-weight:700;margin-right:.5em}
+.tocbtn{flex:none;display:flex;align-items:center;gap:7px;height:38px;padding:0 15px;
+  border:1px solid #6bb6ff5c;border-radius:19px;background:transparent;color:var(--blue-l);
+  font:700 .8rem/1 inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tocbtn:hover{background:#ffffff12;border-color:var(--blue-l)}
+.tocbtn .bars{font-size:1rem;line-height:1}
+.prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--blue);
+  transition:width .12s linear}
+
+/* ============ 表紙 ============ */
+.cover{min-height:calc(100svh - var(--bar));background:var(--deep);position:relative;
+  display:flex;align-items:center;justify-content:center;
+  padding:18px max(14px,3vw) 52px;overflow:hidden}
+.coverart{display:block;width:auto;height:auto;max-width:min(100%,560px);
+  max-height:calc(100svh - var(--bar) - 74px);object-fit:contain;
+  box-shadow:0 18px 54px #000a}
+.cover .scroll{position:absolute;left:0;right:0;bottom:max(14px,var(--safeB));
+  text-align:center;color:#6c7f9c;font-size:.66rem;letter-spacing:.26em;margin:0}
+.printbtn{position:absolute;z-index:3;right:max(14px,3vw);top:14px;
+  border:1px solid #6bb6ff66;background:#0a152699;color:var(--blue-l);padding:10px 14px;
+  font:700 .64rem/1 inherit;letter-spacing:.12em;cursor:pointer;
+  -webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.printbtn:hover{background:var(--navy);border-color:var(--blue-l);color:#fff}
+
+/* ============ レイアウト ============ */
+.layout{max-width:1280px;margin:auto;display:grid;grid-template-columns:272px minmax(0,1fr);
+  gap:52px;padding:64px 32px 110px}
+main{background:#fff;padding:16px 68px 74px;box-shadow:0 12px 45px #0a152614}
+
+/* ============ 目次 ============ */
+nav.side{position:sticky;top:calc(var(--bar) + 22px);align-self:start;background:#fff;
+  padding:22px 18px;border-top:5px solid var(--blue);box-shadow:0 8px 30px #0a152614;
+  max-height:calc(100svh - var(--bar) - 44px);overflow-y:auto}
+nav.side h2{margin:0 0 12px;font-size:.7rem;letter-spacing:.24em;color:var(--blue-d);
+  border:0;padding:0}
+.toc a{display:grid;grid-template-columns:28px 1fr;gap:10px;text-decoration:none;
+  color:var(--ink);padding:10px 4px;border-bottom:1px solid var(--line);align-items:start;
+  -webkit-tap-highlight-color:#0a152614}
+.toc a:last-child{border-bottom:0}
+.toc .n{color:var(--blue-d);font-weight:700;font-size:.72rem;line-height:1.5;padding-top:.12em}
+.toc .t{font-size:.79rem;line-height:1.5;font-weight:700;color:var(--navy)}
+.toc .e{display:block;color:var(--muted);font-size:.62rem;font-weight:400;
+  letter-spacing:.09em;margin-top:2px}
+.toc a[aria-current="true"]{background:var(--mist)}
+.toc a[aria-current="true"] .t{color:var(--blue-d)}
+
+/* ============ 本文 ============ */
+section{padding:54px 0 44px;border-bottom:1px solid var(--line);
+  scroll-margin-top:calc(var(--bar) + 10px)}
+section:last-of-type{border-bottom:0}
+.eyebrow{color:var(--blue-d);font-size:.74rem;font-weight:700;letter-spacing:.16em;margin:0 0 10px}
+.eyebrow .ja{color:var(--muted);letter-spacing:.04em;margin-left:.7em}
+h1{color:var(--navy);font-size:clamp(1.42rem,3vw,2.25rem);line-height:1.4;margin:0 0 30px;
+  padding-bottom:15px;border-bottom:3px solid var(--navy);font-weight:700}
+h2{color:var(--navy);font-size:1.1rem;line-height:1.55;font-weight:700;
+  border-left:4px solid var(--blue);padding-left:.7em;margin:2.2em 0 .9em}
+p{margin:.4em 0 1.05em;text-align:justify}
+
+/* 傍点つきの強調（原本の組版を再現） */
+.pull{margin:1.5em 0;padding:.2em 0 .2em 1em;border-left:4px solid var(--blue);
+  color:var(--navy);font-weight:700;font-size:1.03rem;line-height:2.05;text-align:left}
+.pull span{display:block}
+.pull.emph span{-webkit-text-emphasis:filled dot currentColor;
+  text-emphasis:filled dot currentColor;
+  -webkit-text-emphasis-position:over right;text-emphasis-position:over right}
+
+/* チェックリスト */
+ul.check{list-style:none;margin:1.3em 0;padding:0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+ul.check li{padding:.62em .2em .62em 2em;position:relative;color:var(--navy);font-weight:700;
+  font-size:.97rem;line-height:1.7}
+ul.check li+li{border-top:1px solid var(--line)}
+ul.check li:before{content:"";position:absolute;left:.35em;top:1.08em;width:1em;height:1em;
+  border:2px solid var(--blue);border-radius:2px}
+
+/* 昭和OS / 令和OS 比較表 */
+.tablewrap{margin:1.5em 0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.cmp{width:100%;border-collapse:collapse;font-size:.86rem;line-height:1.65}
+table.cmp th,table.cmp td{padding:.62em .8em;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--line)}
+table.cmp thead th{background:var(--navy);color:#fff;font-weight:700;font-size:.78rem;
+  letter-spacing:.06em;border-bottom:0;position:sticky;top:0}
+table.cmp thead th:nth-child(3){color:var(--blue-l)}
+table.cmp tbody th{width:7.6em;color:var(--navy);font-weight:700;background:var(--mist)}
+table.cmp td:last-child{color:var(--navy);font-weight:700}
+table.cmp tbody tr:last-child th,table.cmp tbody tr:last-child td{border-bottom:0}
+
+/* 章末カード（LIFE SHIFT / SHIFT POINT / 今日の問い） */
+.card{margin:1.9em 0;background:var(--mist);border-top:4px solid var(--blue);
+  padding:1.3em 1.4em 1.5em}
+.card>.lbl{display:inline-block;background:var(--navy);color:#fff;font-weight:700;
+  font-size:.72rem;letter-spacing:.16em;padding:.5em .95em;margin:-1.3em 0 1.1em -1.4em}
+.card p{margin:.3em 0 .9em;color:var(--ink)}
+.card p:last-child{margin-bottom:0}
+.card .b{color:var(--navy);font-weight:700;font-size:1.01rem;line-height:1.95;
+  text-align:left;margin:.5em 0 .9em}
+.card .b.emph{-webkit-text-emphasis:filled dot currentColor;
+  text-emphasis:filled dot currentColor;
+  -webkit-text-emphasis-position:over right;text-emphasis-position:over right}
+.card .tag{display:block;font-weight:700;font-size:.82rem;letter-spacing:.1em;
+  margin:1.5em 0 .5em;padding-bottom:.35em;border-bottom:2px solid currentColor;
+  color:var(--muted)}
+.card .tag.reiwa{color:var(--blue-d)}
+.card>*:first-of-type.tag,.card>.lbl+.tag{margin-top:0}
+
+.endmark{text-align:center;padding:62px 0 6px}
+.endmark .m{color:var(--blue-d);font-size:1.28rem;font-weight:700;letter-spacing:.14em;margin:0}
+.endmark .c{color:var(--navy);font-size:1.02rem;font-weight:700;margin:.55em 0 0}
+.endmark .s{color:var(--muted);font-size:.8rem;margin:.7em 0 0}
+
+/* ============ オーバーレイ目次 ============ */
+#tocpanel{position:fixed;inset:0;z-index:70;background:#fff;overflow-y:auto;
+  -webkit-overflow-scrolling:touch;transform:translateY(100%);transition:transform .26s ease;
+  visibility:hidden;padding:calc(16px + var(--safeT)) max(16px,4vw) calc(40px + var(--safeB))}
+#tocpanel.open{transform:translateY(0);visibility:visible}
+#tocpanel .hd{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding-bottom:12px;border-bottom:3px solid var(--navy);margin-bottom:6px}
+#tocpanel .hd p{margin:0;color:var(--navy);font-size:1.35rem;font-weight:700;line-height:1.3}
+#tocpanel .hd small{display:block;color:var(--blue-d);font-size:.6rem;letter-spacing:.26em;
+  font-weight:700;margin-bottom:3px}
+#tocpanel .close{border:0;background:var(--mist);color:var(--navy);width:46px;height:46px;
+  border-radius:23px;font-size:1.25rem;cursor:pointer;flex:none;
+  -webkit-tap-highlight-color:transparent}
+#tocpanel .toc a{padding:14px 2px;min-height:56px;grid-template-columns:32px 1fr}
+#tocpanel .toc .n{font-size:.8rem}
+#tocpanel .toc .t{font-size:.95rem}
+#tocpanel .toc .e{font-size:.66rem}
+
+.topbtn{position:fixed;z-index:50;right:16px;bottom:calc(16px + var(--safeB));
+  width:46px;height:46px;border:0;border-radius:23px;background:#fff;color:var(--navy);
+  font-size:1.05rem;cursor:pointer;box-shadow:0 4px 16px #0a152633;opacity:0;
+  pointer-events:none;transition:opacity .2s;-webkit-tap-highlight-color:transparent}
+.topbtn.on{opacity:1;pointer-events:auto}
+
+/* ============ 画面幅 ============ */
+@media(max-width:1150px){
+  .layout{grid-template-columns:228px minmax(0,1fr);gap:32px;padding:48px 20px 90px}
+  main{padding:12px 36px 66px}
+  nav.side{padding:20px 15px}
+}
+@media(max-width:1000px){
+  .layout{display:block;padding:0;max-width:none}
+  main{padding:0 20px 76px;box-shadow:none}
+  nav.side{display:none}
+  section{padding:36px 0 30px}
+  p{text-align:left}
+  h1{font-size:1.35rem;margin-bottom:22px}
+  h2{font-size:1.03rem}
+  .card{padding:1.2em 1.1em 1.3em}
+  .card>.lbl{margin-left:-1.1em}
+
+  /* 表は3列のままだと潰れるので、項目ごとの積み上げに組み替える */
+  .tablewrap{overflow-x:visible}
+  table.cmp,table.cmp tbody,table.cmp tr,table.cmp th,table.cmp td{display:block;width:auto}
+  table.cmp thead{display:none}
+  table.cmp tbody tr{border:1px solid var(--line);border-top:3px solid var(--navy);
+    margin:0 0 12px;background:#fff}
+  table.cmp tbody th{width:auto;background:var(--navy);color:#fff;font-size:.85rem;
+    letter-spacing:.06em;border-bottom:0}
+  table.cmp td{border-bottom:0;padding:.7em .9em .7em 6.6em;position:relative;font-size:.9rem}
+  table.cmp td+td{border-top:1px solid var(--line)}
+  table.cmp td:before{content:attr(data-l);position:absolute;left:.9em;top:.7em;
+    font-size:.72rem;font-weight:700;color:var(--muted);letter-spacing:.04em}
+  table.cmp td:last-child:before{color:var(--blue-d)}
+}
+@media(max-width:360px){
+  main{padding:0 14px 76px}
+  .topbar{gap:8px}
+  .topbar .now{display:none}
+  .tocbtn{padding:0 12px}
+}
+@media(hover:none){.tocbtn:hover,.printbtn:hover{background:transparent}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#tocpanel{transition:none}}
+
+/* ============ 印刷 ============ */
+@media print{
+  @page{size:A4;margin:18mm}
+  body{background:#fff;padding-top:0;font-size:10pt}
+  .topbar,.topbtn,#tocpanel,.printbtn,.cover .scroll,nav.side{display:none!important}
+  .cover{min-height:0;break-after:page;padding:0;background:#fff;display:block}
+  .coverart{max-width:100%;max-height:none;width:100%;box-shadow:none}
+  .layout{display:block;max-width:none;padding:0}
+  main{padding:0;box-shadow:none}
+  section{padding:8mm 0 6mm;break-inside:auto}
+  h1,h2,.pull,.card,ul.check,table.cmp tr{break-inside:avoid}
+  h1,h2{break-after:avoid}
+}
+</style>
+</head>
+
+<body id="top">
+
+<header class="topbar">
+  <a class="home" href="#top">LIFE SHIFT</a>
+  <p class="now"><b id="now-no">01</b><span id="now-ttl">時代は変わった</span></p>
+  <button class="tocbtn" id="tocbtn" type="button"
+          aria-controls="tocpanel" aria-expanded="false">
+    <span class="bars" aria-hidden="true">&#9776;</span>目次</button>
+  <span class="prog" id="prog"></span>
+</header>
+
+<section class="cover" id="cover" aria-label="表紙">
+  <img class="coverart" src="cover.jpg" width="1050" height="1575" fetchpriority="high"
+       alt="LIFE SHIFT ― 人生OSをアップデートする9つの物語／人生100年時代を自分の判断で生きるための教科書／著者 大橋孝行">
+  <button class="printbtn" type="button" onclick="window.print()">PRINT / PDF</button>
+  <p class="scroll">SCROLL</p>
+</section>
+
+<div class="layout">
+<nav class="side" aria-label="目次">
+  <h2>CONTENTS</h2>
+  <div class="toc" id="toc-side"></div>
+</nav>
+
+<main>
+
+<section id="chapter-01">
+  <p class="eyebrow">CHAPTER 1 <span class="ja">第一章</span></p>
+  <h1>時代は変わった</h1>
+  <div class="pull emph"><span>あなたは、今も昭和OSで生きていませんか？</span></div>
+  <p>突然ですが、質問です。あなたのスマートフォンは、定期的にOSをアップデートしていますか？もしアップデートしなければ、新しいアプリが動かなくなり、動作は遅くなり、不具合が増え、やがて使えなくなってしまいます。だから私たちは、当たり前のようにOSを更新します。では、人生はどうでしょう。私たちは、学校で学び、親から教わり、社会の常識を信じて生きています。</p>
+  <p>しかし、その常識は、いつ作られたものなのでしょうか。</p>
+  <h2>昭和の常識は、昭和では正しかった。</h2>
+  <p>終身雇用。年功序列。退職金。高金利。年金。大家族。地域コミュニティ。人生80年。当時は、その時代に合った仕組みがありました。だから、「貯金が一番安心。」「結婚して子どもが生まれてから家を買う。」「会社に勤め続ければ安心。」そんな判断が、確かに正解だったのです。昭和の人たちは間違っていたわけではありません。</p>
+  <div class="pull emph"><span>その時代の最適解を生きていた。</span></div>
+  <p>ただ、それだけです。</p>
+  <h2>しかし、時代は変わりました。</h2>
+  <p>人生100年時代。AIの進化。少子高齢化。物価上昇。超低金利。社会保険料の増加。働き方の多様化。情報があふれる社会。令和は、昭和とはまったく違う時代です。それなのに、多くの人は、</p>
+  <div class="pull emph"><span>昭和の判断基準のまま、令和を生きています。</span></div>
+  <h2>問題は「知らないこと」</h2>
+  <p>人生には、学校では教えてくれないことがあります。お金。住まい。保険。健康。災害。老後。どれも人生を左右する重要なテーマなのに、「その時が来たら考えればいい。」そう思ったまま、大人になってしまう人が少なくありません。しかし、人生100年時代では、その考え方こそが、最大のリスクになることがあります。</p>
+  <h2>これから必要なのは、「判断力」</h2>
+  <p>令和には、昭和にはなかった選択肢があります。だから、昔のように、誰かが決めた正解を選ぶだけでは足りません。必要なのは、</p>
+  <div class="pull emph"><span>時代を知ること。</span><span>人生を設計すること。</span><span>そして、自分で判断すること。</span></div>
+  <p>これが、人生100年時代を幸せに生きるための、新しい力です。この教科書は、知識を増やすためのものではありません。人生100年時代に合わせて、</p>
+  <div class="pull emph"><span>あなたの「人生OS」をアップデートするための教科書です。</span></div>
+  <p>これから先のページでは、昭和OSと令和OSの違いを一つひとつ見ながら、これからの時代に必要な判断基準を、一緒に身につけていきましょう。人生は、時代によって正解が変わります。だからこそ、あなた自身の判断基準も、アップデートする時が来ています。</p>
+</section>
+<section id="chapter-02">
+  <p class="eyebrow">CHAPTER 2 <span class="ja">第二章</span></p>
+  <h1>昭和OSと令和OS</h1>
+  <div class="pull emph"><span>時代が変われば、正解も変わる。</span></div>
+  <p>人生は、時代のルールの上で成り立っています。ルールが変われば、正しい判断も変わります。昭和には昭和の正解がありました。そして今、私たちは令和という新しい時代を生きています。つまり、</p>
+  <div class="pull emph"><span>人生のOSそのものが変わったのです。</span></div>
+  <h2>人生80年時代（昭和OS） vs 人生100年時代（令和OS）</h2>
+  <div class="tablewrap"><table class="cmp"><thead><tr><th scope="col">項目</th><th scope="col">■ 昭和OS</th><th scope="col">□ 令和OS</th></tr></thead><tbody><tr><th scope="row">人生</th><td data-l="■ 昭和OS">人生80年前後</td><td data-l="□ 令和OS">人生100年時代</td></tr><tr><th scope="row">選択肢</th><td data-l="■ 昭和OS">少なく、正解が見えやすい</td><td data-l="□ 令和OS">多く、自分で判断する時代</td></tr><tr><th scope="row">働き方</th><td data-l="■ 昭和OS">終身雇用が当たり前</td><td data-l="□ 令和OS">転職・副業・独立が一般的</td></tr><tr><th scope="row">所得</th><td data-l="■ 昭和OS">年功序列で上がる</td><td data-l="□ 令和OS">市場価値を高める時代</td></tr><tr><th scope="row">物価</th><td data-l="■ 昭和OS">安定・安い</td><td data-l="□ 令和OS">上昇傾向（インフレ）</td></tr><tr><th scope="row">預金</th><td data-l="■ 昭和OS">高金利で増える</td><td data-l="□ 令和OS">超低金利でほぼ増えない</td></tr><tr><th scope="row">消費税</th><td data-l="■ 昭和OS">なし</td><td data-l="□ 令和OS">負担が大きい時代</td></tr><tr><th scope="row">社会保険料</th><td data-l="■ 昭和OS">少ない</td><td data-l="□ 令和OS">年々増加</td></tr><tr><th scope="row">医療</th><td data-l="■ 昭和OS">自己負担が軽い</td><td data-l="□ 令和OS">医療・介護費の負担増</td></tr><tr><th scope="row">家計</th><td data-l="■ 昭和OS">貯蓄しやすい構造</td><td data-l="□ 令和OS">貯蓄しにくい構造</td></tr><tr><th scope="row">お金</th><td data-l="■ 昭和OS">借金は悪・現金主義</td><td data-l="□ 令和OS">良い借入と悪い借入を判断する時代</td></tr><tr><th scope="row">住まい</th><td data-l="■ 昭和OS">頭金を貯めてから購入</td><td data-l="□ 令和OS">人生設計に合わせて住環境を整える</td></tr><tr><th scope="row">結婚</th><td data-l="■ 昭和OS">社会全体が結婚を後押し</td><td data-l="□ 令和OS">個人の価値観を尊重する時代</td></tr><tr><th scope="row">子育て</th><td data-l="■ 昭和OS">子どもが多い時代</td><td data-l="□ 令和OS">少子化・一人ひとりへの投資が大きい</td></tr><tr><th scope="row">仕事</th><td data-l="■ 昭和OS">長時間労働が当たり前</td><td data-l="□ 令和OS">生産性・働き方を選ぶ時代</td></tr><tr><th scope="row">老後</th><td data-l="■ 昭和OS">退職金・年金中心</td><td data-l="□ 令和OS">自分で備える時代</td></tr><tr><th scope="row">人間関係</th><td data-l="■ 昭和OS">家族・地域との支え合い</td><td data-l="□ 令和OS">自ら人とのつながりを築く時代</td></tr><tr><th scope="row">情報</th><td data-l="■ 昭和OS">テレビ・新聞中心</td><td data-l="□ 令和OS">AI・SNS・ネットで情報が溢れる時代</td></tr><tr><th scope="row">学び</th><td data-l="■ 昭和OS">学校で学べば十分</td><td data-l="□ 令和OS">生涯学び続ける時代</td></tr><tr><th scope="row">判断</th><td data-l="■ 昭和OS">常識に従えばよかった</td><td data-l="□ 令和OS">自分で設計し、自分で判断する時代</td></tr></tbody></table></div>
+  <h2>昭和が悪いわけではない。</h2>
+  <p>昭和には、昭和の時代背景がありました。だから、昭和の常識は、昭和では正しかったのです。しかし、令和では、社会構造も、働き方も、お金の仕組みも、家族の形も、人生の長ささえ変わりました。つまり、</p>
+  <div class="pull emph"><span>時代が変わった以上、判断基準も変えなければならない。</span></div>
+  <p>それがLIFE SHIFTの考え方です。</p>
+  <h2>あなたの人生OSは最新版ですか？</h2>
+  <p>スマートフォンは、OSをアップデートしなければ、新しいアプリは動きません。人生も同じです。昭和OSのままでは、令和の人生を最適に生きることは難しくなります。これからの時代に必要なのは、知識ではありません。</p>
+  <div class="pull emph"><span>「正しく判断する力」です。</span></div>
+  <p>その判断力を身につけるために、次の章から、人生の六大テーマを一つずつ見ていきましょう。</p>
+</section>
+<section id="chapter-03">
+  <p class="eyebrow">CHAPTER 3 <span class="ja">第三章</span></p>
+  <h1>お金の判断は変わった</h1>
+  <div class="pull emph"><span>あなたは、まだ「貯金だけで安心」と思っていませんか？</span></div>
+  <p>子どもの頃から、私たちはこう教えられてきました。「お金は貯金しなさい。」「借金はしてはいけない。」「コツコツ貯めることが大切。」この考え方は、昭和では間違いなく正しい判断でした。しかし、その前提は大きく変わっています。</p>
+  <h2>昭和では「貯金」が正解だった</h2>
+  <p>昭和は、高金利の時代でした。銀行に預けるだけでお金は増え、年功序列によって所得も少しずつ上がっていきました。退職金や年金も今より充実し、物価も安定していました。だからこそ、</p>
+  <div class="pull emph"><span>「貯めること」が、未来の安心につながっていたのです。</span></div>
+  <h2>令和では「貯めるだけ」では守れない</h2>
+  <p>現在は、超低金利。一方で、物価は上がり、税金や社会保険料も増え続けています。同じ100万円でも、10年後には買えるものが減ってしまうかもしれません。つまり、</p>
+  <div class="pull emph"><span>預金だけでは、お金の価値を守れない時代になりました。</span></div>
+  <h2>借金は悪なのか？</h2>
+  <p>昭和では、「借金は悪いもの」という考え方が一般的でした。しかし令和では、住宅ローン。教育への投資。事業への投資。将来の価値を生み出す借入は、人生を豊かにする選択になることがあります。反対に、浪費や見栄のための借入は、人生を苦しくします。重要なのは、</p>
+  <div class="pull emph"><span>借りるか借りないかではなく、何のために借りるのか。</span></div>
+  <p>その判断です。</p>
+  <h2>お金の目的</h2>
+  <p>お金は、増やすことが目的ではありません。人生を豊かにするための道具です。家族との時間。子どもの未来。安心して暮らせる住まい。夢への挑戦。大切な人を守る備え。そのために、お金をどう使い、どう守り、どう育てるか。それが人生100年時代のお金の力です。</p>
+  <aside class="card"><p class="lbl">LIFE SHIFT</p><p class="tag">■ 昭和OS</p><p class="b emph">「貯金こそ安心。」</p><p>高金利。年功序列。退職金。年金。昭和では、お金を貯めることが未来の安心につながっていました。</p><p class="tag reiwa">□ 令和OS</p><p class="b emph">「判断力こそ安心。」</p><p>超低金利。物価上昇。社会保険料増加。人生100年時代。令和では、貯めるだけでは未来は守れません。</p><p class="b emph">「貯める・守る・増やす・活かす」</p><p>この4つを考えながら、自分で判断する力が必要です。</p></aside>
+  <aside class="card"><p class="lbl">SHIFT POINT</p><p class="b emph">安心をつくるのは、お金の額ではありません。</p><p>安心をつくるのは、</p><p class="b emph">時代に合わせて、お金を正しく判断する力です。</p></aside>
+  <aside class="card"><p class="lbl">今日の問い</p><p>あなたのお金の判断は、昔からそうだから、という理由で選んでいませんか？それとも、人生100年時代に合わせて、自分自身の判断基準で選んでいますか？人生は、日々の小さな判断の積み重ねでできています。だからこそ、</p><p class="b emph">お金の判断を変えれば、人生は変わり始めます。</p></aside>
+</section>
+<section id="chapter-04">
+  <p class="eyebrow">CHAPTER 4 <span class="ja">第四章</span></p>
+  <h1>住まいの判断は変わった</h1>
+  <div class="pull emph"><span>あなたは、まだ「結婚して子どもが生まれたら家を買うもの」と思っていませんか？</span></div>
+  <p>日本では長い間、「結婚したら賃貸。」「子どもが生まれたらマイホーム。」「子どもの人数が決まってから家を建てる。」そんな考え方が当たり前でした。しかし、その常識は本当に今の時代にも合っているのでしょうか。</p>
+  <h2>昭和では「待つ」が正解だった</h2>
+  <p>昭和の住宅購入は、人生最大の夢でした。頭金を何百万円も貯め、高い金利の住宅ローンを組み、子どもの人数が決まってから、家族全員が暮らせる家を建てる。当時は子どもも多く、住宅性能も今ほど高くありませんでした。だからこそ、</p>
+  <div class="pull emph"><span>「十分に準備してから家を建てる」ことが最適な判断だったのです。</span></div>
+  <h2>令和では「住環境を先に整える」という考え方</h2>
+  <p>今はどうでしょうか。住宅ローンは超低金利。頭金なしで購入できる住宅も増えました。毎月の支払いは、家賃と同程度、あるいはそれ以下になるケースもあります。子どもの人数も、一人から二人が中心です。つまり、昭和とは住宅を取り巻く環境そのものが変わりました。</p>
+  <h2>本当に大切なのは、第一子からの住環境</h2>
+  <p>子どもが最も成長するのは、生まれてからの数年間です。その時期に、どんな家で暮らすのか。どんな環境で眠るのか。どんな街で育つのか。どんな空気の中で生活するのか。住環境は、子どもの成長だけではありません。夫婦のストレス。家事のしやすさ。健康。家計。家族の時間。人生そのものに大きな影響を与えます。だからこそ、住まいは、</p>
+  <div class="pull emph"><span>「子どもが大きくなってから考えるもの」ではなく、</span><span>「第一子が生まれる前後から人生設計として考える</span><span>もの」</span></div>
+  <p>へと変わっています。</p>
+  <h2>「買う」か「借りる」かではない</h2>
+  <p>LIFE SHIFTが伝えたいのは、持ち家が正しい。賃貸が間違っている。という話ではありません。本当に大切なのは、家族の人生。働き方。収入。将来設計。子どもの教育。老後。それらすべてを考えた上で、</p>
+  <div class="pull emph"><span>自分たちにとって最適な住まいを判断すること。</span></div>
+  <p>住まいは、人生最大の買い物ではありません。</p>
+  <div class="pull emph"><span>人生最大の「環境づくり」です。</span></div>
+  <aside class="card"><p class="lbl">LIFE SHIFT</p><p class="tag">■ 昭和OS</p><p class="b emph">「家は、子どもの人数が決まってから買うもの。」</p><p>頭金を貯め、十分に準備をしてから購入する。それが昭和では合理的な判断でした。</p><p class="tag reiwa">□ 令和OS</p><p class="b emph">「住環境は、人生設計の中で考えるもの。」</p><p>家を買うことが目的ではありません。賃貸か、持ち家か。いつ住環境を整えるべきか。それを人生全体から判断することが大切です。</p></aside>
+  <aside class="card"><p class="lbl">SHIFT POINT</p><p class="b emph">住まいは、家を買う話ではありません。</p><p class="b emph">家族の未来をつくる環境を、いつ、どのように整えるか。</p><p>その判断が、子どもの成長、家計、健康、そして人生の豊かさにつながっていきます。</p></aside>
+  <aside class="card"><p class="lbl">今日の問い</p><p>あなたは住まいを、「いつ買うか」だけで考えていませんか？それとも、</p><p class="b emph">「家族が幸せに暮らすために、いつ住環境を整えるべきか」</p><p>という視点で考えていますか？住まいは、建物ではありません。</p><p class="b emph">人生を支える土台です。</p><p>だからこそ、住まいを変える前に、</p><p class="b emph">住まいの判断基準をアップデートすることが大切なのです。</p></aside>
+</section>
+<section id="chapter-05">
+  <p class="eyebrow">CHAPTER 5 <span class="ja">第五章</span></p>
+  <h1>万が一への備えは変わった</h1>
+  <div class="pull emph"><span>あなたは、まだ「保険に入っているから安心」と思っていませんか？</span></div>
+  <p>多くの人は、「もしものために。」という理由で保険に加入しています。しかし、こんな質問をすると、答えられる人はほとんどいません。「もし今、働けなくなったら、毎月いくら足りなくなりますか？」「その不足分を、何年間備えていますか？」「国の制度で、どこまで守られるか知っていますか？」保険に入っていることと、人生に備えられていることは、同じではありません。</p>
+  <h2>昭和では「みんなと同じ」が安心だった</h2>
+  <p>昭和は、終身雇用。退職金。年金。地域とのつながり。家族の支え。社会全体で助け合う仕組みが今より強い時代でした。だから、知り合いに勧められた保険。会社で加入した保険。「みんなと同じだから安心。」そんな考え方でも、大きな問題になりにくい時代でした。</p>
+  <h2>令和では「自分に必要な備え」を考える時代</h2>
+  <p>人生100年時代。働き方も家族の形も人それぞれです。会社員。自営業。共働き。子どもの人数。住宅ローン。貯蓄額。家計の状況。同じ人生は一つとしてありません。だから、必要な備えも一人ひとり違います。まず知るべきなのは、日本にはどんな公的保障があるのか。その上で、不足する部分だけを備える。これが、令和の万が一への備え方です。</p>
+  <h2>「保険」ではなく「人生防衛」</h2>
+  <p>万が一に備える方法は、保険だけではありません。生活防衛資金。健康管理。住宅ローンの保障。公的制度の理解。家族との話し合い。収入源を増やすこと。どれも、人生を守る大切な備えです。つまり、本当に必要なのは、保険商品ではなく、</p>
+  <div class="pull emph"><span>人生全体を守る設計なのです。</span></div>
+  <h2>守るべきものは何ですか？</h2>
+  <p>万が一が起きたとき、本当に守りたいものは何でしょう。家族の暮らし。子どもの教育。住まい。夢。日常の笑顔。その大切なものを守るために、何を備えるべきか。それを考えることが、人生100年時代の新しい判断です。</p>
+  <aside class="card"><p class="lbl">LIFE SHIFT</p><p class="tag">■ 昭和OS</p><p class="b emph">「保険に入っていれば安心。」</p><p>みんなと同じ保障。勧められた商品。それでも成り立ちやすい時代でした。</p><p class="tag reiwa">□ 令和OS</p><p class="b emph">「必要な備えを、自分で判断する。」</p><p>公的保障を知る。家計を知る。不足分を備える。人生を守る方法は、保険だけではありません。</p></aside>
+  <aside class="card"><p class="lbl">SHIFT POINT</p><p class="b emph">万が一をなくすことはできません。</p><p>しかし、</p><p class="b emph">万が一に困らない人生は設計できます。</p><p>備えるとは、不安を増やすことではなく、未来の安心をつくることです。</p></aside>
+  <aside class="card"><p class="lbl">今日の問い</p><p>あなたは、「何となく安心。」で備えていますか？それとも、</p><p class="b emph">「何を守るために、何を備えるのか。」</p><p>を理解した上で判断していますか？人生を守る力は、商品ではなく、</p><p class="b emph">判断力から生まれます。</p></aside>
+</section>
+<section id="chapter-06">
+  <p class="eyebrow">CHAPTER 6 <span class="ja">第六章</span></p>
+  <h1>健康の考え方は変わった</h1>
+  <div class="pull emph"><span>あなたは、まだ「病気になったら病院へ行けばいい」と思っていませんか？</span></div>
+  <p>私たちは子どもの頃から、風邪をひけば病院へ。ケガをすれば病院へ。具合が悪くなったら治療を受ける。そんな考え方の中で育ってきました。もちろん、医療は私たちの命を守る大切な存在です。しかし、人生100年時代では、それだけでは足りません。</p>
+  <h2>昭和では「治す医療」が中心だった</h2>
+  <p>昭和は、人生80年前後の時代。今ほど長寿ではありませんでした。病気になれば治療を受ける。治ったら仕事に戻る。それが一般的な考え方でした。医療技術の発展によって、多くの命が救われ、「長生きすること」が社会全体の目標でもありました。</p>
+  <h2>令和では「健康で生きる」が大切</h2>
+  <p>人生100年時代。もし100歳まで生きるなら、大切なのは寿命だけではありません。</p>
+  <div class="pull emph"><span>何歳まで、自分らしく元気に暮らせるか。</span></div>
+  <p>これが健康寿命です。健康寿命が短ければ、長い老後を思い通りに過ごすことは難しくなります。だから令和では、病気になってから治すのではなく、病気になりにくい生活をつくることが重要になりました。</p>
+  <h2>健康は毎日の小さな選択で決まる</h2>
+  <p>健康は、特別なことだけでつくられるものではありません。睡眠。食事。運動。ストレスとの向き合い方。定期的な健康診断。そして、どんな住環境で暮らすか。毎日の小さな判断が、10年後、20年後の健康につながっていきます。</p>
+  <h2>健康は人生の土台</h2>
+  <p>健康を失うと、働くことも、旅行を楽しむことも、家族との時間を過ごすことも難しくなります。どれだけお金があっても、健康がなければ人生を十分に楽しむことはできません。だから健康は、人生の一つのテーマではありません。</p>
+  <div class="pull emph"><span>人生すべてを支える土台なのです。</span></div>
+  <aside class="card"><p class="lbl">LIFE SHIFT</p><p class="tag">■ 昭和OS</p><p class="b emph">「病気になったら治す。」</p><p>医療に任せる。症状が出てから対処する。それが当たり前の時代でした。</p><p class="tag reiwa">□ 令和OS</p><p class="b emph">「健康は、日々の判断でつくる。」</p><p>病気になる前から、睡眠。食事。運動。住環境。ストレス管理。毎日の選択が、未来の健康をつくります。</p></aside>
+  <aside class="card"><p class="lbl">SHIFT POINT</p><p class="b emph">寿命は延びました。</p><p>だからこそ、これから大切なのは、</p><p class="b emph">「何歳まで生きるか」ではなく、</p><p class="b emph">「何歳まで元気に生きられるか」。</p><p>健康は、毎日の小さな判断の積み重ねによって育まれます。</p></aside>
+  <aside class="card"><p class="lbl">今日の問い</p><p>あなたは健康を、「体調が悪くなったら考えるもの」だと思っていませんか？それとも、</p><p class="b emph">「未来の自分への投資」</p><p>として考えていますか？人生100年時代。健康は運ではありません。</p><p class="b emph">日々の判断が、未来の健康をつくるのです。</p><p>「人生で最も大切な資産は、お金ではありません。健康です。」</p></aside>
+</section>
+<section id="chapter-07">
+  <p class="eyebrow">CHAPTER 7 <span class="ja">第七章</span></p>
+  <h1>災害への備えは変わった</h1>
+  <div class="pull emph"><span>あなたは、まだ「災害は運だから仕方ない」と思っていませんか？</span></div>
+  <p>日本は世界でも有数の災害大国です。地震。台風。豪雨。洪水。土砂災害。毎年のように自然災害が発生しています。しかし、同じ災害でも、被害を大きく受ける人と、最小限で済む人がいます。その違いは、運だけなのでしょうか。</p>
+  <h2>昭和では「災害は仕方ない」が当たり前だった</h2>
+  <p>昭和の時代は、情報も限られていました。ハザードマップも普及しておらず、住宅性能も現在ほど高くありませんでした。災害は、「起きたら仕方がない。」そんな考え方が一般的でした。もちろん、それは当時の時代背景では自然なことでした。</p>
+  <h2>令和では「備えること」が当たり前の時代</h2>
+  <p>今は違います。ハザードマップで危険な場所を確認できます。住宅性能も大きく向上しました。耐震性能。断熱性能。耐風性能。火災への備え。防災用品。避難情報。災害保険。家族との連絡方法。災害が起こることは防げません。しかし、</p>
+  <div class="pull emph"><span>被害を減らすための選択肢は、昔よりはるかに増えています。</span></div>
+  <h2>災害への備えは「住まい選び」から始まる</h2>
+  <p>災害対策というと、非常食や防災バッグを思い浮かべる人が多いでしょう。もちろん、それも大切です。しかし、もっと大切なのは、</p>
+  <div class="pull emph"><span>どこに住むか。</span><span>どんな家に住むか。</span></div>
+  <p>という判断です。住まいは、家族を守る「シェルター」です。人生で最も長い時間を過ごす場所だからこそ、安全性を考えることは、家族の未来を守ることにつながります。</p>
+  <h2>備えは、家族への愛</h2>
+  <p>災害への備えは、不安になるためにするものではありません。安心して暮らすためにするものです。水を備える。食料を備える。避難場所を確認する。家族で話し合う。住宅性能を考える。その一つひとつが、大切な人を守る行動になります。</p>
+  <aside class="card"><p class="lbl">LIFE SHIFT</p><p class="tag">■ 昭和OS</p><p class="b emph">「災害は運だから仕方ない。」</p><p>起きてから対応する。被害を受けても受け入れる。それが一般的な考え方でした。</p><p class="tag reiwa">□ 令和OS</p><p class="b emph">「災害は、備えで被害を減らせる。」</p><p>自然災害は防げません。しかし、住まい。情報。備蓄。家族との連携。日頃の準備。これらの判断によって、未来は大きく変わります。</p></aside>
+  <aside class="card"><p class="lbl">SHIFT POINT</p><p class="b emph">災害は、防ぐことはできません。</p><p>しかし、</p><p class="b emph">備えることで、大切な人を守ることはできます。</p><p>安心とは、「何も起きないこと」ではなく、「何かが起きても乗り越えられる状態」をつくることです。</p></aside>
+  <aside class="card"><p class="lbl">今日の問い</p><p>あなたは、災害への備えを「そのうちやろう。」と思っていませんか？それとも、</p><p class="b emph">「家族を守る準備は、今日から始めるもの。」</p><p>と考えていますか？未来は予測できません。しかし、</p><p class="b emph">未来への備えは、今日の判断で変えることができます。</p></aside>
+</section>
+<section id="chapter-08">
+  <p class="eyebrow">CHAPTER 8 <span class="ja">第八章</span></p>
+  <h1>老後の考え方は変わった</h1>
+  <div class="pull emph"><span>あなたは、まだ「老後は定年後に考えればいい」と思っていませんか？</span></div>
+  <p>多くの人は、老後という言葉を聞くと、「まだ先の話。」そう感じます。20代。30代。40代。「今は関係ない。」そう思ってしまうのです。しかし、人生100年時代では、その考え方が大きな落とし穴になります。</p>
+  <h2>昭和では「老後は短かった」</h2>
+  <p>昭和の平均寿命は、現在より短く、定年後の期間も今ほど長くありませんでした。退職金。年金。そして、子どもや地域とのつながり。社会全体で支え合う仕組みがありました。だから、老後は人生の「最後の時間」として考えればよかったのです。</p>
+  <h2>令和では「老後」は人生の3分の1になる</h2>
+  <p>人生100年時代。もし100歳まで生きるとしたら、定年後の人生は30年以上続く可能性があります。30年。これは、新しく一つの人生が始まるくらい長い時間です。その時間を、どこで暮らすのか。どんな収入で生活するのか。健康をどう維持するのか。誰と支え合うのか。今まで以上に、人生全体を設計することが必要になります。</p>
+  <h2>本当に考えるべきは「老後資金」ではない</h2>
+  <p>よく、「老後2,000万円問題」という言葉を耳にします。しかし、本当に考えるべきなのは、2,000万円という数字ではありません。毎月いくら必要なのか。年金はいくら受け取れるのか。その差額はいくらなのか。何年間生活する可能性があるのか。人によって、必要なお金も、働き方も、暮らし方も違います。だから、必要なのは、誰かの数字ではなく、</p>
+  <div class="pull emph"><span>自分自身の人生設計です。</span></div>
+  <h2>老後は、今日から始まっている</h2>
+  <p>老後の準備は、60歳から始めるものではありません。貯蓄。住まい。健康。働き方。人とのつながり。そのすべては、今日の選択が未来につながっています。老後とは、未来の話ではありません。</p>
+  <div class="pull emph"><span>今の生き方の積み重ねが、未来の暮らしになる。</span></div>
+  <p>それが人生100年時代です。</p>
+  <aside class="card"><p class="lbl">LIFE SHIFT</p><p class="tag">■ 昭和OS</p><p class="b emph">「老後は、定年後に考えるもの。」</p><p>退職金。年金。家族や地域の支え。それが老後の安心につながっていました。</p><p class="tag reiwa">□ 令和OS</p><p class="b emph">「老後は、人生を設計すること。」</p><p>100年人生では、老後は人生の一部ではなく、人生そのものです。住まい。健康。働き方。資産。人間関係。すべてを含めて設計することが、未来の安心につながります。</p></aside>
+  <aside class="card"><p class="lbl">SHIFT POINT</p><p class="b emph">人生100年時代では、</p><p class="b emph">老後は「終わり」ではありません。</p><p class="b emph">人生の新しいステージです。</p><p>だからこそ、老後の準備とは、未来のためだけではなく、</p><p class="b emph">今日の生き方を見直すことなのです。</p></aside>
+  <aside class="card"><p class="lbl">今日の問い</p><p>あなたは、老後を「まだ先の話」だと思っていませんか？それとも、</p><p class="b emph">「今日の判断が、未来の自分をつくる。」</p><p>という視点で生きていますか？人生100年時代。未来は突然やってくるものではありません。</p><p class="b emph">未来は、今日という一日の積み重ねでつくられていくのです。</p></aside>
+</section>
+<section id="chapter-09">
+  <p class="eyebrow">CHAPTER 9 <span class="ja">第九章</span></p>
+  <h1>人生を変えるのは、知識ではなく判断である</h1>
+  <h2>あなたは、何を学びましたか？</h2>
+  <p>ここまで、私たちは人生100年時代の変化を見てきました。お金。住まい。万が一。健康。災害。老後。一つひとつ見ていくと、これまで当たり前だと思っていた常識が、大きく変わっていることに気づいたと思います。しかし、 LIFE SHIFTが本当に伝えたいことは、知識そのものではありません。本当に伝えたいこと。それは、</p>
+  <div class="pull emph"><span>「人生を変えるのは、判断である。」</span></div>
+  <p>ということです。</p>
+  <h2>知っているだけでは、人生は変わらない</h2>
+  <p>住宅ローンを知っていても、判断できなければ意味がありません。保険を知っていても、自分に合った保障を選べなければ意味がありません。健康の知識があっても、行動しなければ健康にはなれません。投資を知っていても、判断できなければ未来は変わりません。人生は、知識の量で決まるものではありません。</p>
+  <div class="pull emph"><span>どんな判断を積み重ねるか。</span></div>
+  <p>その積み重ねが、未来をつくっています。</p>
+  <h2>人生は、小さな判断の積み重ね</h2>
+  <p>人生は、一度の大きな決断だけで変わるものではありません。毎日の小さな判断。何を買うのか。どこに住むのか。誰と生きるのか。どんな働き方を選ぶのか。何に時間を使うのか。何にお金を使うのか。その一つひとつが、5年後。10年後。20年後。あなたの人生になります。</p>
+  <h2>人生に「正解」はない</h2>
+  <p>昭和は、正解が見えやすい時代でした。終身雇用。年功序列。退職金。高金利。社会の流れに乗れば、ある程度未来を描くことができました。しかし、令和は違います。働き方も。暮らし方も。家族の形も。幸せの形も。人それぞれです。もう、誰かの正解を真似する時代ではありません。</p>
+  <div class="pull emph"><span>自分にとっての最適解を見つける時代です。</span></div>
+  <h2>判断には「軸」が必要</h2>
+  <p>では、どうすれば、良い判断ができるのでしょうか。判断は、勘ではありません。運でもありません。感情だけでもありません。誰かに言われたからでもありません。</p>
+  <div class="pull emph"><span>判断とは、</span><span>未来を見据え、自分の価値観と正しい知識をもとに選択することです。</span></div>
+  <p>だからこそ、時代を知ること。未来を知ること。そして、考え続けること。その積み重ねが、人生の判断軸になります。</p>
+  <h2>LIFE SHIFTが届けたかったもの</h2>
+  <p>LIFE SHIFTは、人生100年時代を知るための教科書でした。しかし、本当に届けたかったものは、知識ではありません。</p>
+  <div class="pull emph"><span>人生100年時代を幸せに生きるための、新しい判断軸です。</span></div>
+  <p>時代が変われば、必要な判断も変わります。だからこそ、学び続けること。考え続けること。そして、自分自身で判断すること。それが、これからの人生を幸せに生きるための新しい力になります。</p>
+  <div class="pull emph"><span>LIFE SHIFT</span><span>■ 昭和OS</span><span>「正解を探す時代。」</span></div>
+  <p>親が決める。会社が決める。社会が決める。世間の常識に合わせる。正解が比較的見えやすく、その流れに乗れば、人生を歩みやすい時代でした。</p>
+  <div class="pull emph"><span>□ 令和OS</span><span>「自分で判断する時代。」</span></div>
+  <p>働き方も。住まいも。お金も。健康も。老後も。人生のあらゆる選択を、自分で考え、自分で判断する時代です。だからこそ、人生100年時代を生きるためには、</p>
+  <div class="pull emph"><span>「判断力」</span></div>
+  <p>という新しい力が必要なのです。</p>
+  <div class="pull emph"><span>SHIFT POINT</span></div>
+  <p>人生を変えるのは、情報量ではありません。知識量でもありません。収入でもありません。</p>
+  <div class="pull emph"><span>「どんな判断を積み重ねるか。」</span></div>
+  <p>人生は、一度の大きな決断ではなく、毎日の小さな判断でつくられています。そして、</p>
+  <div class="pull emph"><span>判断の質が、人生の質になります。</span><span>最後の問い</span></div>
+  <p>あなたは、これまで何を基準に人生を判断してきましたか？親でしょうか。会社でしょうか。世間でしょうか。SNSでしょうか。友人でしょうか。それとも、</p>
+  <div class="pull emph"><span>自分自身でしょうか。</span></div>
+  <p>そして、あなたは、</p>
+  <div class="pull emph"><span>これからも、その判断基準で生きていきますか。</span></div>
+  <h2>次章へ</h2>
+  <p>人生100年時代を知ること。そして、人生を変えるのは、</p>
+  <div class="pull emph"><span>「判断」であること。</span></div>
+  <p>ここまでが、LIFE SHIFTで伝えたかったことです。しかし、人生100年時代には、もう一つだけ、欠かせないものがあります。それは、</p>
+  <div class="pull emph"><span>人生を設計すること。</span></div>
+  <p>あなたの人生は、本当に設計されていますか。それとも、まだ「未設計」のままでしょうか。次章では、人生100年時代に求められる</p>
+  <div class="pull emph"><span>「未設計人生」と「設計人生」</span></div>
+  <p>という、新しい人生の考え方についてお伝えします。</p>
+</section>
+<section id="epilogue">
+  <p class="eyebrow">EPILOGUE <span class="ja">エピローグ</span></p>
+  <h1>未設計人生から、設計人生へ</h1>
+  <h2>時代が変われば、生き方も変わる。</h2>
+  <p>ここまで、私たちは人生100年時代について学んできました。そして、最後に一つだけ、覚えて帰っていただきたいことがあります。それは、</p>
+  <div class="pull emph"><span>時代が変われば、生き方も変わる。</span></div>
+  <p>ということです。昭和の常識で、令和を生きることはできません。人生100年時代には、人生100年時代の生き方があります。</p>
+  <h2>昭和は、未設計でも生きやすい時代だった。</h2>
+  <p>人生80年時代。終身雇用。年功序列。退職金。高金利。年金。社会の仕組みが、人生を支えてくれていました。もちろん努力は必要でした。しかし、社会の流れに乗れば、人生を歩みやすい時代だったのです。だから、人生を細かく設計しなくても、幸せになれる人が多くいました。</p>
+  <h2>令和は、設計人生が求められる時代。</h2>
+  <p>人生100年。AI。物価上昇。少子高齢化。働き方の多様化。選択肢は増えました。自由も増えました。しかし、自由には責任があります。もう、誰かが人生を決めてくれる時代ではありません。これからは、</p>
+  <div class="pull emph"><span>自分で考え、</span><span>自分で判断し、</span><span>自分で人生を設計する時代です。</span></div>
+  <h2>あなたは、こんな人生になっていませんか？</h2>
+  <p>「その時になったら考えよう。」「まだ大丈夫。」「みんなもそうだから。」「何とかなる。」もし、そんな言葉を、何度も使っているなら、それは、人生が未設計のサインかもしれません。</p>
+  <h2>人生未設計あるある</h2>
+  <ul class="check"><li>家計を何となく管理している。</li><li>保険は勧められるまま加入した。</li><li>老後はまだ先の話だと思っている。</li><li>健康は悪くなってから考える。</li><li>災害対策は何もしていない。</li><li>家族と将来について話したことがない。</li><li>人生設計を作ったことがない。</li><li>将来に漠然とした不安がある。</li></ul>
+  <p>一つでも当てはまったとしても、落ち込む必要はありません。日本では、人生を設計する教育を受ける機会が、ほとんどなかったからです。</p>
+  <h2>未設計が生む未来</h2>
+  <p>その場では困らない判断も、未来では大きな問題になることがあります。教育費が足りない。住宅ローンが家計を苦しめる。病気で働けなくなる。親の介護が突然始まる。老後資金が不足する。災害への備えがなく困る。そして、人生を振り返った時、多くの人が口にする言葉があります。</p>
+  <div class="pull emph"><span>「もっと早く知っていれば。」</span></div>
+  <p>人生で最も大きな後悔は、失敗したことではありません。</p>
+  <div class="pull emph"><span>知らなかったことです。</span></div>
+  <h2>設計人生という、新しい生き方</h2>
+  <p>設計人生とは、予定どおりに生きることではありません。未来を想像し、未来から逆算して、今日を判断することです。今の自分を知る。未来を考える。正しい判断軸を学ぶ。備える。行動する。そして、定期的に見直す。それが、人生100年時代の生き方です。</p>
+  <h2>人生設計力</h2>
+  <p>これからの時代に必要なのは、お金持ちになる力でも、学歴でもありません。必要なのは、</p>
+  <div class="pull emph"><span>人生設計力。</span></div>
+  <p>現状を把握する力。未来を予測する力。正しく判断する力。備える力。行動する力。この五つの力が、人生100年時代を幸せに生きる土台になります。</p>
+  <h2>あなたは、自分の現在地を知っていますか？</h2>
+  <p>目的地へ向かう時、最初に必要なのは、地図ではありません。</p>
+  <div class="pull emph"><span>現在地です。</span></div>
+  <p>現在地が分からなければ、どれだけ立派な地図があっても、目的地へたどり着くことはできません。人生も同じです。まず知るべきなのは、今の自分です。お金は大丈夫なのか。住まいは大丈夫なのか。万が一への備えは十分なのか。健康はどうなのか。災害への備えはあるのか。老後への準備はできているのか。そして、人生設計力は、どれくらい身についているのか。現在地が分かれば、未来への道筋は見えてきます。</p>
+  <h2>次のステージ</h2>
+  <p>人生には、健康診断があります。病気を治すためではなく、病気を防ぐためです。人生も同じです。困ってからではなく、困る前に、今の自分を知る。そのために生まれたのが、</p>
+  <div class="pull emph"><span>LIFE Check42</span></div>
+  <p>42の問いが、あなたの人生の現在地を映し出します。未来は、偶然では変わりません。</p>
+  <div class="pull emph"><span>未来は、今日の判断で変わります。</span></div>
+  <p>そして、正しい判断は、</p>
+  <div class="pull emph"><span>現在地を知ることから始まります。</span></div>
+  <p>さあ、あなた自身の人生を診断してみましょう。ようこそ、</p>
+  <div class="pull emph"><span>LIFE Check42へ。</span></div>
+</section>
+
+<div class="endmark">
+  <p class="m">LIFE SHIFT</p>
+  <p class="c">昭和OSから、令和OSへ。</p>
+  <p class="s">未来は、今日の判断で変わります。　著者　大橋孝行</p>
+</div>
+
+</main>
+</div>
+
+<button class="topbtn" id="topbtn" type="button" aria-label="ページ先頭へ">&#8593;</button>
+
+<div id="tocpanel" role="dialog" aria-modal="true" aria-label="目次" aria-hidden="true">
+  <div class="hd">
+    <p><small>CONTENTS</small>目次</p>
+    <button class="close" id="tocclose" type="button" aria-label="目次を閉じる">&#215;</button>
+  </div>
+  <div class="toc" id="toc-panel"></div>
+</div>
+
+<script>
+window.__CH__ = [{"no": "01", "id": "chapter-01", "title": "時代は変わった", "eyebrow": "第一章"}, {"no": "02", "id": "chapter-02", "title": "昭和OSと令和OS", "eyebrow": "第二章"}, {"no": "03", "id": "chapter-03", "title": "お金の判断は変わった", "eyebrow": "第三章"}, {"no": "04", "id": "chapter-04", "title": "住まいの判断は変わった", "eyebrow": "第四章"}, {"no": "05", "id": "chapter-05", "title": "万が一への備えは変わった", "eyebrow": "第五章"}, {"no": "06", "id": "chapter-06", "title": "健康の考え方は変わった", "eyebrow": "第六章"}, {"no": "07", "id": "chapter-07", "title": "災害への備えは変わった", "eyebrow": "第七章"}, {"no": "08", "id": "chapter-08", "title": "老後の考え方は変わった", "eyebrow": "第八章"}, {"no": "09", "id": "chapter-09", "title": "人生を変えるのは、知識ではなく判断である", "eyebrow": "第九章"}, {"no": "--", "id": "epilogue", "title": "未設計人生から、設計人生へ", "eyebrow": "エピローグ"}];
+</script>
+<script>
+(function () {
+  "use strict";
+  var CH = window.__CH__;
+
+  /* ---- 目次を組み立てる（上部バーのパネル / 側面固定の2箇所へ） ---- */
+  function build(el) {
+    var h = "";
+    CH.forEach(function (c) {
+      h += '<a href="#' + c.id + '" data-id="' + c.id + '">' +
+           '<span class="n">' + c.no + '</span>' +
+           '<span class="t">' + c.title +
+           '<span class="e">' + c.eyebrow + '</span></span></a>';
+    });
+    el.innerHTML = h;
+  }
+  var side = document.getElementById("toc-side");
+  var panelToc = document.getElementById("toc-panel");
+  if (side) build(side);
+  build(panelToc);
+
+  /* ---- オーバーレイ目次の開閉（iOS のスクロール飛びを防ぐ） ---- */
+  var box = document.getElementById("tocpanel"),
+      btn = document.getElementById("tocbtn"),
+      cls = document.getElementById("tocclose"),
+      topb = document.getElementById("topbtn"),
+      lockY = 0;
+
+  function open() {
+    lockY = window.scrollY || window.pageYOffset;
+    document.body.style.position = "fixed";
+    document.body.style.top = -lockY + "px";
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    box.classList.add("open");
+    box.setAttribute("aria-hidden", "false");
+    btn.setAttribute("aria-expanded", "true");
+    cls.focus();
+  }
+  function close() {
+    box.classList.remove("open");
+    box.setAttribute("aria-hidden", "true");
+    btn.setAttribute("aria-expanded", "false");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    window.scrollTo(0, lockY);
+  }
+  btn.addEventListener("click", open);
+  cls.addEventListener("click", close);
+
+  /* パネル内リンク：先に閉じてから、復元位置に邪魔されずに移動する */
+  panelToc.addEventListener("click", function (e) {
+    var a = e.target.closest("a");
+    if (!a) return;
+    e.preventDefault();
+    var id = a.dataset.id;
+    close();
+    var el = document.getElementById(id);
+    if (el) {
+      /* close() が scrollTo で復元した直後に動かす（rAF は不可視タブで止まる） */
+      setTimeout(function () {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, "", "#" + id);
+      }, 0);
+    }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && box.classList.contains("open")) close();
+  });
+
+  topb.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---- 読了バー・トップへ戻るボタン ---- */
+  var prog = document.getElementById("prog");
+  function onScroll() {
+    var y = window.scrollY || window.pageYOffset;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (h > 0 ? Math.min(100, (y / h) * 100) : 0) + "%";
+    topb.classList.toggle("on", y > 700);
+  }
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll, { passive: true });
+  onScroll();
+
+  /* ---- 現在地（上部バーの表示と目次のハイライト） ---- */
+  var links = document.querySelectorAll(".toc a");
+  var nowNo = document.getElementById("now-no");
+  var nowTtl = document.getElementById("now-ttl");
+  var byId = {};
+  CH.forEach(function (c) { byId[c.id] = c; });
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var id = en.target.id, c = byId[id];
+        links.forEach(function (a) {
+          a.setAttribute("aria-current", a.dataset.id === id ? "true" : "false");
+        });
+        if (c) {
+          nowNo.textContent = c.no === "--" ? "" : c.no;
+          nowTtl.textContent = c.title;
+        }
+      });
+    }, { rootMargin: "-18% 0px -72% 0px" });
+    document.querySelectorAll("main section").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
+</body></html>
