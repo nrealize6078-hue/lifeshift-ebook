@@ -1,0 +1,75 @@
+/* 人の道 — 武道の静謐と和紙の余白。本文は改変しない。 */
+:root{--navy:#303a36;--deep:#242c29;--blue:#887b61;--blue-l:#decba8;--blue-d:#685d48;--ink:#303633;--muted:#757367;--mist:#f0ede5;--line:#dcd5c8}
+html{scroll-behavior:smooth}
+body{background:#e9e6de;color:var(--ink);font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho","Noto Serif CJK JP",serif;line-height:2.05}
+button,input,textarea,.topbar,.toc-search,.journal-status{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
+button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #9d8360;outline-offset:3px}
+a{color:#655d4e}
+.topbar{background:#303a36;box-shadow:0 2px 9px #15191524;border-bottom:1px solid #817560}
+.topbar .home,.topbar .now b,.tocbtn{color:#e0d2b5}
+.topbar .now{color:#d8d7d0}.prog{background:#b7a180;height:2px}
+.tocbtn{border:1px solid #aca085;border-radius:3px;background:#ffffff08}
+.tocbtn:hover{background:#ffffff13;border-color:#e0d2b5}
+.cover{background:#303a36;padding:27px max(18px,3vw) 58px}
+.cover::before{background:radial-gradient(ellipse at 50% 36%,#4c554e 0%,#27302d 73%,#1c2422 100%);opacity:1}
+.coverart.cover-image{position:relative;width:min(100%,475px);max-height:calc(100svh - var(--bar) - 104px);height:auto;aspect-ratio:2/3;object-fit:contain;box-shadow:0 17px 42px #0d130f66;border:1px solid #ddd2ba33}
+.coverart.cover-image::after{content:none}
+.cover .scroll{color:#d1c7ad;opacity:.72}
+.printbtn{border:1px solid #b8a57c;background:#303a36b8;color:#e9d9b8;letter-spacing:.12em}
+.printbtn:hover{background:#48514b}
+.layout{gap:42px}
+main{background:#faf8f2;border:1px solid #e4ded2;box-shadow:0 8px 27px #242c2914}
+nav.side{background:#f8f5ee;border-top:3px solid #94846a;box-shadow:0 5px 20px #262a2312}
+nav.side h2{color:#6f6654}
+.toc-search,.date-label input,.memo-label textarea{border:1px solid #d7d0c1;border-radius:2px;background:#fcfaf5;color:#343a34}
+.toc-area,.toc-simple,.toc-theme,.toc-lesson-link{border-color:#e2dcd0}
+.toc-area>summary{color:#303a35;font-weight:700}
+.toc-area>summary .num,.toc-theme>summary::after,.toc-area>summary::after,.toc-simple span,.toc-lesson-link .count{color:#8e7a5c}
+.toc-lesson-link:hover,.toc-lesson-link[aria-current="true"],.toc-simple[aria-current="true"]{background:#eae5d9;color:#484b41}
+.toc-theme>summary{color:#444741}
+.intro-section,.appendix,.lesson{border-bottom:1px solid #ddd6c9}
+.eyebrow{color:#8b785e;font-weight:600;letter-spacing:.17em}
+main h1{color:#303a35;font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:700;letter-spacing:.07em;border-bottom:1px solid #9f927d;padding-bottom:20px}
+main h3:not(.block-label){color:#343b35}
+.intro-section>h3,.appendix>h3{border-left:2px solid #a89a80}
+.intro-section>h4{color:#796a52}
+.note-paragraph{background:#f2eee5;border-left:2px solid #a59a83}
+.domain-divider{background:#303a36;color:#faf8f2;border-top:1px solid #aa9c7f;border-bottom:1px solid #aa9c7f}
+.domain-divider::after{border:1px solid #c7ba9b33;box-shadow:none;opacity:.5}
+.domain-divider-no{color:#d6c19a;font-weight:600}
+.domain-divider-title strong{font-family:"Noto Serif JP","Yu Mincho",serif;font-weight:600;letter-spacing:.1em}
+.domain-divider p{color:#dcd9cd}
+.theme-divider{background:#efebe0;border-left:3px solid #9b8b70;padding:24px 29px}
+.theme-divider span{color:#877359}
+.theme-divider h2{font-family:"Noto Serif JP","Yu Mincho",serif;color:#303a35;font-weight:700;letter-spacing:.05em}
+.theme-divider p{color:#736e61}
+.lesson{padding-top:64px;padding-bottom:53px}
+.lesson-meta{margin-top:15px}
+.topic-name{color:#343c35;font-weight:700}
+.topic-name b{color:#877052}
+.status-label{border:1px solid #dcd4c3;color:#777062;background:transparent}
+.lesson-title{border-bottom:1px solid #ab9d83;color:#2f3933;font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:700;letter-spacing:.035em;padding-bottom:17px}
+.block-label{color:#7a6549;font-weight:600;letter-spacing:.15em}
+.block-label span{color:#343b35;font-weight:700}
+.reading-text{border-left:2px solid #c3b8a4;padding-left:23px}
+.reading-text p{line-height:2.16;color:#303831;letter-spacing:.012em}
+.card-learning{background:#f0ede5;border-top:1px solid #a49a85;border-left:3px solid #9b8c75;border-radius:0;padding:25px 28px}
+.card-learning .reading-text p{color:#3c4239}
+.card-action{background:#f6f3ec;border:1px solid #d9d3c8;border-left:3px solid #92846c;padding:24px 27px}
+.journal{background:#f9f7f1;border:1px solid #dad3c7;border-radius:1px;padding:22px 24px}
+.journal-head{border-bottom:1px solid #d6cebe}
+.journal-head h3{color:#76674e!important}
+.journal-head h3 span{color:#343b35}
+.journal-status,.lesson-next a,.lesson-pagination a{color:#78694e}
+.lesson-pagination{border-color:#dad3c6}
+.source-line{color:#5e5b52}
+.endmark .m{color:#776a55;font-weight:600}.endmark .c{color:#343a35}
+#tocpanel{background:#f8f5ee}
+#tocpanel .hd{border-bottom:1px solid #9b8f7b}
+#tocpanel .hd p{font-family:"Noto Serif JP","Yu Mincho",serif;font-weight:700;color:#343b35}
+#tocpanel .hd small{color:#847153}
+#tocpanel .close{background:#e9e4d8;color:#353b35}
+.topbtn{background:#f8f4ea;border:1px solid #d7cdbb;box-shadow:0 3px 13px #2c302c22}
+@media(max-width:1000px){main{border:0}.layout{background:#faf8f2}.domain-divider{padding:35px 28px}.lesson{padding-top:48px}.coverart.cover-image{max-width:480px}}
+@media(max-width:570px){.cover{padding:16px 12px 52px}.coverart.cover-image{max-height:calc(100svh - var(--bar) - 74px)}.reading-text p{line-height:2.08}.theme-divider{padding:20px 23px}.card-learning,.card-action{padding:22px 19px}.lesson{padding-top:42px}}
+@media print{body{background:#fff}.cover{background:#fff}.cover::before{display:none}.coverart.cover-image{width:auto;height:100%;max-height:100%;box-shadow:none;border:0}.card-learning,.card-action,.domain-divider,.theme-divider{print-color-adjust:exact;-webkit-print-color-adjust:exact}main{border:0}}
